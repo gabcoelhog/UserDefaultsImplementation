@@ -21,6 +21,7 @@
 		98CB53A22873D269008F8BF1 /* UserDefaultsAbstractionUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98CB53A12873D269008F8BF1 /* UserDefaultsAbstractionUITests.swift */; };
 		98CB53A42873D269008F8BF1 /* UserDefaultsAbstractionUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98CB53A32873D269008F8BF1 /* UserDefaultsAbstractionUITestsLaunchTests.swift */; };
 		98CB53B12873D279008F8BF1 /* UserDefaults+Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98CB53B02873D279008F8BF1 /* UserDefaults+Protocols.swift */; };
+		98F56C41287E5F3E006A1046 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F56C40287E5F3E006A1046 /* Persistence.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +60,7 @@
 		98CB53A12873D269008F8BF1 /* UserDefaultsAbstractionUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsAbstractionUITests.swift; sourceTree = "<group>"; };
 		98CB53A32873D269008F8BF1 /* UserDefaultsAbstractionUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsAbstractionUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		98CB53B02873D279008F8BF1 /* UserDefaults+Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Protocols.swift"; sourceTree = "<group>"; };
+		98F56C40287E5F3E006A1046 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +96,7 @@
 				9871B91428774B3100394D8D /* Types+Persistable.swift */,
 				9871B91628774B4D00394D8D /* PropertyWrappers.swift */,
 				9871B91828774B7700394D8D /* UserDefaultsWrapper.swift */,
+				98F56C40287E5F3E006A1046 /* Persistence.swift */,
 			);
 			path = UserDefaults;
 			sourceTree = "<group>";
@@ -281,6 +284,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				98F56C41287E5F3E006A1046 /* Persistence.swift in Sources */,
 				9871B91728774B4D00394D8D /* PropertyWrappers.swift in Sources */,
 				9871B91528774B3100394D8D /* Types+Persistable.swift in Sources */,
 				9871B91328774AE700394D8D /* UserDefaultsStorage.swift in Sources */,

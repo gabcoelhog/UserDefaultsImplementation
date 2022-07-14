@@ -7,33 +7,33 @@
 
 import Foundation
 
-final class UserDefaultsStorage: StorageProvider {
+public final class UserDefaultsStorage: StorageProvider {    
 
     private var wrapper: UserDefaultsProvider
 
-    init(wrapper: UserDefaultsProvider = UserDefaultsWrapper()) {
+    public init(wrapper: UserDefaultsProvider = UserDefaultsWrapper()) {
         self.wrapper = wrapper
     }
 
-    func save<Value>(_ value: Value, for key: String) where Value : Persistable {
-        wrapper.defaults.set(value.storedValue, forKey: key)
+    public func save<Value>(_ value: Value, for key: String) where Value : Persistable {
+        wrapper.defaults.set(value.persistentValue, forKey: key)
     }
 
-    func delete(for key: String) {
+    public func delete(for key: String) {
         wrapper.defaults.removeObject(forKey: key)
     }
 
-    func fetch<Value>(for key: String) -> Value? where Value : Persistable {
+    public func fetch<Value>(for key: String) -> Value? where Value : Persistable {
         guard let fetched: Any = wrapper.defaults.object(forKey:key) else { return nil }
 
         return Value(storedValue: fetched as! Value.StoredValue)
     }
 
-    func clear() {
+    public func clear() {
         wrapper.defaults.clear(for: wrapper.bundleIdentifier)
     }
 
-    func register<Value: Persistable>(value: Value, key: String) {
+    public func register<Value: Persistable>(value: Value, key: String) {
         wrapper.register(value: value, key: key)
     }
 }

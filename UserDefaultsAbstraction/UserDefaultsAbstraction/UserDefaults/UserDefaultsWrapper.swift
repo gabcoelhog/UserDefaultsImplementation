@@ -7,11 +7,16 @@
 
 import Foundation
 
-final class UserDefaultsWrapper: UserDefaultsProvider {
-    var defaults = UserDefaults.standard
-    var bundleIdentifier = Bundle.main.bundleIdentifier
+public final class UserDefaultsWrapper: UserDefaultsProvider {
+    public var defaults: UserDefaults
+    public var bundleIdentifier: String?
 
-    func register<Value>(value: Value, key: String) where Value : Persistable {
-        defaults.register(defaults: [key: value.storedValue])
+    public init(defaults: UserDefaults = UserDefaults.standard, bundleIdentifier: String? = Bundle.main.bundleIdentifier) {
+        self.defaults = defaults
+        self.bundleIdentifier = bundleIdentifier
+    }
+    
+    public func register<Value>(value: Value, key: String) where Value : Persistable {
+        defaults.register(defaults: [key: value.persistentValue])
     }
 }
