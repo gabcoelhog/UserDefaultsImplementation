@@ -28,6 +28,7 @@ struct Storage {
     }
 }
 
+
 class ViewController: UIViewController {
     
     @IBOutlet var newSwitch: UISwitch!
@@ -36,6 +37,8 @@ class ViewController: UIViewController {
     
     @Storage(key: "lulul", defaultValue: "lulu")
     var luluValue: String
+    
+    var diffValue: GLUserDefaultsValue<Bool> = GLUserDefaultsValue(key: "lele", defaultValue: true)
 
 //    @PersistableValue(defaultValue: "lulul", key: "lulu")
 //    var luluValue: String
@@ -49,22 +52,32 @@ class ViewController: UIViewController {
         if sender.isOn {
             userDefaultsStorage.save("lalal", for: "lala")   // This works
             luluValue = "lulul2"
+            diffValue.wrappedValue = true
             verifyUserDefaults()
         } else {
             userDefaultsStorage.delete(for: "lala") // This works
             luluValue = "lulu"
+            diffValue.wrappedValue = false
             verifyUserDefaults()
         }
     }
     
     func verifyUserDefaults() {
-        if _luluValue.wrappedValue == "lulul2" {
+        if let diffValue = diffValue.wrappedValue, diffValue {
             view.backgroundColor = .red
-            print(_luluValue.wrappedValue)
+            print(diffValue)
         } else {
             view.backgroundColor = .blue
-            print(_luluValue.wrappedValue)
+            print(diffValue.wrappedValue)
         }
+
+//        if _luluValue.wrappedValue == "lulul2" {
+//            view.backgroundColor = .red
+//            print(_luluValue.wrappedValue)
+//        } else {
+//            view.backgroundColor = .blue
+//            print(_luluValue.wrappedValue)
+//        }
         
         
         // This works

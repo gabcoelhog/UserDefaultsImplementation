@@ -68,3 +68,36 @@ struct PersistableValue<Value: Persistable> {
         
     }
 }
+
+
+struct GLUserDefaultsValue<ValueType: Persistable> {
+
+    private let userDefaultsStorage: StorageProvider
+    private let key: String
+    private let defaultValue: ValueType
+
+    var wrappedValue: ValueType? {
+        get {
+            userDefaultsStorage.fetch(for: key)
+        }
+        set {
+            guard let newValue = newValue else { return }
+            userDefaultsStorage.save(newValue, for: key)
+        }
+    }
+
+    init(key: String, defaultValue: ValueType, userDefaultsStorage: StorageProvider = UserDefaultsStorage()) {
+        self.key = key
+        self.defaultValue = defaultValue
+        self.userDefaultsStorage = userDefaultsStorage
+    }
+}
+
+//protocol UserDefaultsSafetyKeysProtocol {
+//    var hasSeenFamilyLocationOnboarding: Bool { get set }
+//}
+//
+//class UserDefaultsSafetyKeys: UserDefaultsSafetyKeysProtocol {
+//    var hasSeenFamilyLocationOnboarding: Bool
+//}
+
